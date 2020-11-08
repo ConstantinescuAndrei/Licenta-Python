@@ -19,30 +19,30 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
-print('Do you wanna sign in?')
+# print('Do you wanna sign in?')
 
-answer = input('Y/N\n')
+# answer = input('Y/N\n')
 
-if answer == 'Y':
-    email = input('Email:')
-    print('\n')
-    password = input('Password:')
-    print('\n')
-    user = auth.sign_in_with_email_and_password(email, password)
-    auth.send_email_verification(user['idToken'])
-    print(json.dumps(auth.get_account_info(user['idToken']), sort_keys=True, indent=4))
+# if answer == 'Y':
+#     email = input('Email:')
+#     print('\n')
+#     password = input('Password:')
+#     print('\n')
+#     user = auth.sign_in_with_email_and_password(email, password)
+#     auth.send_email_verification(user['idToken'])
+#     print(json.dumps(auth.get_account_info(user['idToken']), sort_keys=True, indent=4))
 
-print('Do you wanna log in?')
+# print('Do you wanna log in?')
 
-answer = input('Y/N\n')
+# answer = input('Y/N\n')
 
-if answer == 'Y':
-    email = input('Email:')
-    print('\n')
-    password = input('Password:')
-    print('\n')
-    user = auth.create_user_with_email_and_password(email, password)
-    print(json.dumps(auth.get_account_info(user['idToken']), sort_keys=True, indent=4))
+# if answer == 'Y':
+#     email = input('Email:')
+#     print('\n')
+#     password = input('Password:')
+#     print('\n')
+#     user = auth.create_user_with_email_and_password(email, password)
+#     print(json.dumps(auth.get_account_info(user['idToken']), sort_keys=True, indent=4))
 
 # user = auth.create_user_with_email_and_password(email, password)
 db = firebase.database()
