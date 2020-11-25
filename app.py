@@ -19,6 +19,11 @@ config = {
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
+account = {
+    "uID":"s95SXK8LCPQCNciDlBalc0EI8Uq1",
+    "username":"Blytzlike"
+}
+
 # print('Do you wanna sign in?')
 
 # answer = input('Y/N\n')
@@ -71,19 +76,23 @@ def login():
 
 @app.route('/temperature', methods=['GET', 'POST'])
 def getTemperature():
-    data = {}    
-    now = datetime.datetime.now()
-    temperature = request.args.get('temperature')   
-    umidity = request.args.get('umidity')
-    account = request.args.get('account')
-    data['temperature'] = temperature
-    data['umidity'] = umidity
-    data['account'] = account
-    data['year'] = now.year
-    data['month'] = now.month
-    data['day'] = now.day
-    data['hour'] = now.hour
-    data['minute'] = now.minute
+    temperature = request.args.get("temperature")
+    umidity = request.args.get("umidity")
+    longitude = request.args.get('longitude')
+    latitude = request.args.get('latitude')
+
+    data = {
+        "account":account,
+        "temperature sensor":{
+            "temperature": temperature,
+            "umidity": umidity
+        },
+        "gps coordinates":{
+            "latitude": latitude,
+            "longitude": longitude
+        }
+    }
+    
     addToDBTempSensor(data)
     return '<h1>It worked</h1>'
 
